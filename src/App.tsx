@@ -1,14 +1,16 @@
+import { useEffect } from 'react';
 import './App.css';
-import { ContextProvider } from './context-provider/context-provider';
+import { Test } from './components/test';
+import { defaultContext } from './context/context';
+import { ContextProvider } from './context/context-provider';
+import { setColorPallete } from './themes/themes';
 
-function App() {
-  return (
-    <ContextProvider>
-      <div>
-        <p>{'Hey Maddie'}</p>
-      </div>
-    </ContextProvider>
-  );
+export default function App() {
+    useEffect(() => setColorPallete(defaultContext.theme), []);
+
+    return (
+        <ContextProvider>
+            <Test />
+        </ContextProvider>
+    );
 }
-
-export default App;
