@@ -1,6 +1,6 @@
 export type ColorTheme = 'light' | 'dark';
 
-export type ColorPallete = {
+export type ColorPalette = {
     primary: string;
     secondary: string;
     font: string;
@@ -8,6 +8,6 @@ export type ColorPallete = {
 };
 
 export type ThemeOptions = {
-    light: ColorPallete;
-    dark: ColorPallete;
+    light: ColorPalette;
+    dark: ColorPalette;
 };

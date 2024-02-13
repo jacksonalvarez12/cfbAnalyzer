@@ -1,17 +1,24 @@
 import { useCFBContext } from '../context/context-user';
-import './test.css';
+import { fonts } from '../styles/styles';
 
 export const Test = () => {
-    const { theme, setTheme } = useCFBContext();
+    const { theme, setTheme, palette } = useCFBContext();
 
     const onPress = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
 
     return (
-        <div>
-            <p>{'Hey Maddie'}</p>
-            <button onClick={onPress}>{'Toggle Pallete'}</button>
+        <div style={{ backgroundColor: palette.background }}>
+            <p style={{ ...fonts.body, color: palette.primary }}>
+                {'Hey Maddie'}
+            </p>
+            <button
+                onClick={onPress}
+                style={{ ...fonts.body, color: palette.secondary }}
+            >
+                {'Toggle Pallete'}
+            </button>
         </div>
     );
 };
