@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
+import { Test } from './components/test';
+import { ContextProvider } from './context/context-provider';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <App />
+        <ContextProvider>
+            <Test />
+        </ContextProvider>
     </React.StrictMode>
 );

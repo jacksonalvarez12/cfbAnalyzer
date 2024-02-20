@@ -1,7 +1,9 @@
 import { ReactNode, useMemo, useState } from 'react';
-import { themes } from '../themes/themes';
-import { ColorPalette, ColorTheme } from '../themes/types';
 import { CFBContext, defaultContext } from './context';
+import { langs } from './langs/langs';
+import { CopyDoc, Lang } from './langs/types';
+import { themes } from './themes/themes';
+import { ColorPalette, ColorTheme } from './themes/types';
 import { CFBContextType } from './types';
 
 export const ContextProvider = ({ children }: { children: ReactNode }) => {
@@ -16,10 +18,24 @@ export const ContextProvider = ({ children }: { children: ReactNode }) => {
         setThemeState(theme);
     };
 
+    // Language logic
+    const [lang, setLangState] = useState<Lang>(defaultContext.lang);
+
+    const copyDoc: CopyDoc = useMemo(() => {
+        return langs[lang];
+    }, [lang]);
+
+    const setLang = (lang: Lang) => {
+        setLangState(lang);
+    };
+
     const context: CFBContextType = {
         theme,
         palette,
         setTheme,
+        lang,
+        copyDoc,
+        setLang,
     };
     return (
         <CFBContext.Provider value={context}>{children}</CFBContext.Provider>
